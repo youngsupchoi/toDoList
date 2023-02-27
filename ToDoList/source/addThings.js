@@ -13,7 +13,6 @@ const addThings = ({addToDo, getToDos, setToDos, isVisible, setIsVisible}) => {
       animationType="fade"
       transparent={true}
       visible={isVisible}
-      presentationStyle="formSheet"
       onRequestClose={() => {
         setIsVisible(false);
         console.log(isVisible);
@@ -21,7 +20,10 @@ const addThings = ({addToDo, getToDos, setToDos, isVisible, setIsVisible}) => {
       <View style={styles.background}>
         <View style={styles.addThing}>
           <TextInput
-            onChangeText={inputText => setAuthor(inputText)}
+            onChangeText={inputText => {
+              setAuthor(inputText);
+              console.log(typeof author);
+            }}
             placeholder="author"
             style={styles.input}></TextInput>
           <TextInput

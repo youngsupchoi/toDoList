@@ -1,7 +1,7 @@
-import {Modal, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Alert, Modal, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 
-const editThing = ({editToDo, editIsVisible, setEditIsVisible}) => {
+const editThing = ({editId, editToDo, editIsVisible, setEditIsVisible}) => {
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
@@ -17,25 +17,25 @@ const editThing = ({editToDo, editIsVisible, setEditIsVisible}) => {
       <View style={styles.modalBackground}>
         <View style={styles.modalContent}>
           <TextInput
-            onChange={inputText => {
+            onChangeText={inputText => {
               setAuthor(inputText);
             }}
             placeholder="author"
             style={styles.input}></TextInput>
           <TextInput
-            onChange={inputText => {
+            onChangeText={inputText => {
               setTitle(inputText);
             }}
             placeholder="title"
             style={styles.input}></TextInput>
           <TextInput
-            onChange={inputText => {
+            onChangeText={inputText => {
               setContent(inputText);
             }}
             placeholder="content"
             style={styles.input}></TextInput>
           <TextInput
-            onChange={inputText => {
+            onChangeText={inputText => {
               setPriority(inputText);
             }}
             placeholder="priority"
@@ -44,6 +44,14 @@ const editThing = ({editToDo, editIsVisible, setEditIsVisible}) => {
             <Text
               onPress={() => {
                 editToDo({
+                  ToDoID: editId,
+                  title: title,
+                  content: content,
+                  author: author,
+                  priority: priority,
+                });
+                console.log({
+                  ToDoID: editId,
                   title: title,
                   content: content,
                   author: author,

@@ -30,7 +30,7 @@ const toDoThings = ({
         />
         <Entypo
           onPress={() => {
-            setEditIsVisible(true);
+            setEditIsVisible({id: toDoId, visible: true});
           }}
           style={[styles.Icon, {backgroundColor: '#01A9DB'}]}
           name="pencil"

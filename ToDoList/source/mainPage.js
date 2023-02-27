@@ -26,7 +26,7 @@ const mainPage = ({}) => {
 
   const getToDos = () => {
     axios
-      .get('http://10.16.132.55:3001/todos')
+      .get('http://10.0.2.2:3001/todos')
       .then(Response => {
         setToDos(Response.data);
       })
@@ -35,7 +35,7 @@ const mainPage = ({}) => {
 
   const addToDo = toDo => {
     axios
-      .post(`http://10.16.132.55:3001/create`, toDo)
+      .post(`http://10.0.2.2:3001/create`, toDo)
       .then(Response => {
         console.log(Response.data);
 
@@ -46,7 +46,7 @@ const mainPage = ({}) => {
 
   const deleteToDo = indexId => {
     axios
-      .delete(`http://10.16.132.55:3001/todos/${indexId}`)
+      .delete(`http://10.0.2.2:3001/todos/${indexId}`)
       .then(() => {
         console.log('delete successfully');
       })
@@ -55,7 +55,7 @@ const mainPage = ({}) => {
 
   const editToDo = todo => {
     axios
-      .post(`http://10.16.132.55:3001/todos`, todo)
+      .put(`http://10.0.2.2:3001/todos`, todo)
       .then(() => {
         console.log('edit successfully');
       })
@@ -66,6 +66,11 @@ const mainPage = ({}) => {
     getToDos();
   }, [deleteIsVisible.id, editIsVisible.id]);
 
+  /*   const ip = fetch('http://10.0.2.2:3001')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+ */
   return (
     <View style={styles.container}>
       <TopNav isVisible={isVisible} setIsVisible={setIsVisible} />
@@ -84,11 +89,14 @@ const mainPage = ({}) => {
         setDeleteIsVisible={setDeleteIsVisible}
       />
       <EditThing
+        editId={editIsVisible.id}
         editToDo={editToDo}
         editIsVisible={editIsVisible}
         setEditIsVisible={setEditIsVisible}
       />
-      <ScrollView style={styles.toDoThings}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.toDoThings}>
         {toDos.map(item => {
           return (
             <ToDoThings
@@ -114,7 +122,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#E9ECEF',
-    paddingVertical: 50,
+    paddingTop: 50,
     alignItems: 'center',
   },
 

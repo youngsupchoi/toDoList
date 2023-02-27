@@ -8,7 +8,6 @@ const deleteThings = ({deleteToDo, deleteIsVisible, setDeleteIsVisible}) => {
       animationType="fade"
       transparent={true}
       visible={deleteIsVisible.visible}
-      presentationStyle="formSheet"
       onRequestClose={() => {
         setDeleteIsVisible({id: 0, visible: false});
       }}>

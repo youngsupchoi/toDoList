@@ -31,7 +31,7 @@ app.get("/todos", (req, res) => {
 });
 
 app.put("/todos", (req, res) => {
-  const toDoId = req.body.ToDoId;
+  const toDoId = req.body.ToDoID;
   const author = req.body.author;
   const title = req.body.title;
   const content = req.body.content;
