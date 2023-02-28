@@ -110,6 +110,7 @@ const mainPage = ({}) => {
             />
           );
         })}
+        <View style={{height: 20}}></View>
       </ScrollView>
     </View>
   );
